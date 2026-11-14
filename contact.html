@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact · WASP</title>
+  <meta name="description" content="Contact the WASP project team at Hasselt University.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html"><img src="assets/img/wasp-logo.png" alt="World Archives of Species Perception project — home" width="135" height="58"></a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg></button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="wasp-a.html">WASP-A</a></li>
+          <li><a href="wasp-p.html">WASP-P</a></li>
+          <li><a href="wasp-b.html">WASP-B <span class="tag">Soon</span></a></li>
+          <li><a href="index.html">Project</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-head dark">
+      <div class="container">
+        <span class="eyebrow">Contact us</span>
+        <h1>Get in touch</h1>
+        <p class="lead">Questions about the surveys, a collaboration idea, or press enquiries? We would love to hear from you.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container contact-grid">
+        <ul class="contact-list">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><div><strong>Call us</strong><a href="tel:+3211268111">+32 (0)11 268 111</a></div></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><div><strong>Write us</strong><a href="mailto:wasp.uhasselt@gmail.com">wasp.uhasselt@gmail.com</a></div></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><div><strong>Visit us</strong>Hasselt University<br>Agoralaan – Building D<br>3590 Diepenbeek, Belgium<br><span style="color:var(--muted)">Fax: +32 (0)11 268 199</span></div></li>
+        </ul>
+
+        <form class="card" id="contact-form" novalidate>
+          <h2 style="font-size:1.8rem">Send a message</h2>
+          <div class="field">
+            <label for="c-name">Your name <span class="req" aria-hidden="true">*</span></label>
+            <input id="c-name" name="name" autocomplete="name" required aria-describedby="e-name">
+            <span class="err" id="e-name"></span>
+          </div>
+          <div class="field">
+            <label for="c-mail">Your email <span class="req" aria-hidden="true">*</span></label>
+            <input id="c-mail" name="email" type="email" autocomplete="email" required aria-describedby="e-mail">
+            <span class="err" id="e-mail"></span>
+          </div>
+          <div class="field">
+            <label for="c-msg">Your message <span class="req" aria-hidden="true">*</span></label>
+            <textarea id="c-msg" name="message" required aria-describedby="e-msg"></textarea>
+            <span class="err" id="e-msg"></span>
+          </div>
+          <button class="btn btn-primary" type="submit">Submit <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          <p class="form-note" id="form-status" role="status" style="margin-top:var(--s3)">Fields marked * are required.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="cols">
+        <div>
+          <h2>Contact WASP</h2>
+          <ul>
+            <li><a href="tel:+3211268111">+32 (0)11 268 111</a></li>
+            <li><a href="mailto:wasp.uhasselt@gmail.com">wasp.uhasselt@gmail.com</a></li>
+            <li>Agoralaan – Building D, 3590 Diepenbeek, Belgium</li>
+          </ul>
+        </div>
+        <div>
+          <h2>Surveys</h2>
+          <ul><li><a href="wasp-a.html">WASP-A · Animals</a></li><li><a href="wasp-p.html">WASP-P · Parasites</a></li><li><a href="wasp-b.html">WASP-B · Plants</a></li></ul>
+        </div>
+        <div>
+          <h2>Project</h2>
+          <ul><li><a href="index.html">About WASP</a></li><li><a href="team.html">Team</a></li><li><a href="contact.html">Contact</a></li></ul>
+        </div>
+        <img class="cmk" src="assets/img/cmk-logo.png" alt="CMK Centre for Environmental Sciences, UHasselt" width="150" height="93" loading="lazy">
+      </div>
+      <div class="legal"><span>© <span data-year>2026</span> WASP Project · Centre for Environmental Sciences, Hasselt University</span><span>Species photos via iNaturalist under Creative Commons licences</span></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js"></script>
+  <script>
+    /* Prototype: validates, then opens the visitor's mail app.
+       To go live, POST { name, email, message } to the existing endpoint
+       https://wasp.orpolyzos.com/contact/email instead. */
+    (function () {
+      const form = document.getElementById('contact-form');
+      const rules = {
+        'c-name': (v) => v.trim() ? '' : 'Please enter your name.',
+        'c-mail': (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? '' : 'Please enter a valid email address, e.g. name@example.com.',
+        'c-msg': (v) => v.trim().length >= 5 ? '' : 'Please write a short message (at least 5 characters).'
+      };
+      const errId = { 'c-name': 'e-name', 'c-mail': 'e-mail', 'c-msg': 'e-msg' };
+      function check(id) {
+        const el = document.getElementById(id);
+        const msg = rules[id](el.value);
+        el.setAttribute('aria-invalid', msg ? 'true' : 'false');
+        document.getElementById(errId[id]).textContent = msg;
+        return !msg;
+      }
+      Object.keys(rules).forEach((id) => document.getElementById(id).addEventListener('blur', () => check(id)));
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const bad = Object.keys(rules).filter((id) => !check(id));
+        if (bad.length) { document.getElementById(bad[0]).focus(); return; }
+        const val = (id) => document.getElementById(id).value.trim();
+        const name = val('c-name');
+        const body = `${val('c-msg')}\n\n— ${name} (${val('c-mail')})`;
+        window.location.href = `mailto:wasp.uhasselt@gmail.com?subject=${encodeURIComponent('WASP website message from ' + name)}&body=${encodeURIComponent(body)}`;
+        document.getElementById('form-status').textContent = 'Your mail app should open with your message ready to send.';
+      });
+    })();
+  </script>
+</body>
+</html>

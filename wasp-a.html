@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WASP-A Animal Survey · WASP</title>
+  <meta name="description" content="Rate how you perceive animal species and help build the World Archives of Species Perception.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://wasp.orpolyzos.com">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/survey.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the survey</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html"><img src="assets/img/wasp-logo.png" alt="World Archives of Species Perception project — home" width="135" height="58"></a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg></button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="wasp-a.html" aria-current="page">WASP-A</a></li>
+          <li><a href="wasp-p.html">WASP-P</a></li>
+          <li><a href="wasp-b.html">WASP-B <span class="tag">Soon</span></a></li>
+          <li><a href="index.html">Project</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="survey-page">
+    <div class="container">
+      <div class="survey-top">
+        <h1>WASP-A · Animals <small id="archive-progress">0 of 1,980 animals discovered</small></h1>
+        <div class="top-actions">
+          <span class="sync" id="sync" data-state="ok" role="status"><i aria-hidden="true"></i><span>All ratings saved</span></span>
+          <a class="link-btn" href="#explore"><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg>Results so far</a>
+          <button class="link-btn" type="button" data-open-about><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>About this survey</button>
+        </div>
+      </div>
+
+      <!-- Contributor HUD -->
+      <section class="hud" aria-label="Your contribution">
+        <div class="hud-title">
+          <span class="title-medal" aria-hidden="true"><svg class="icon"><use href="#i-award"/></svg></span>
+          <div>
+            <span class="title-kicker">Your contributor title</span>
+            <div class="title-name" id="title-name">Visitor</div>
+            <div class="title-sub" id="title-sub">Rate your first species to become a Contributor</div>
+            <div class="xpbar" role="progressbar" aria-label="Progress to next title" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="titlebar"></i></div>
+          </div>
+        </div>
+        <div class="hud-stats">
+          <div class="hud-stat"><b><svg class="icon" aria-hidden="true"><use href="#i-binoculars"/></svg><span id="stat-rated">0</span></b><span>species rated</span></div>
+          <div class="hud-stat streak" id="stat-streak-wrap"><b><svg class="icon" aria-hidden="true"><use href="#i-flame"/></svg><span id="stat-streak">0</span></b><span>day streak</span></div>
+          <div class="hud-stat"><b><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg><span id="stat-groups">0/10</span></b><span>groups explored</span></div>
+        </div>
+      </section>
+
+      <!-- Rating card -->
+      <article class="rate-card" id="rate-card" aria-labelledby="q-title">
+        <div class="photo-col"><div class="photo-sticky">
+          <div class="photo-frame">
+            <div class="shimmer" id="species-shimmer"></div>
+            <img id="species-img" class="loading" alt="" width="800" height="800">
+            <span class="specimen-no" id="species-no">Specimen No. —</span>
+          </div>
+          <div class="specimen-label">
+            <span class="sci" id="species-name">Loading species…</span>
+            <span class="attr" id="species-credit"></span>
+          </div>
+        </div></div>
+
+        <div class="q-col">
+          <form class="q-form" id="q-form" onsubmit="return false">
+            <h2 class="q-title" id="q-title" tabindex="-1">How would you rate this animal in terms of it being</h2>
+            <p class="q-help">Choose a hexagon from 1 to 9 for each trait. There are no right or wrong answers.</p>
+            <div class="q-progress" id="q-progress" aria-hidden="true"></div>
+            <div id="q-rows"></div>
+            <div class="q-actions">
+              <span class="hint" id="rate-hint" aria-live="polite">0 of 6 rated</span>
+              <button class="btn btn-primary btn-rate" id="btn-rate" type="button" disabled><span class="label">Rate</span></button>
+            </div>
+          </form>
+
+          <div class="result">
+            <div class="result-head">
+              <span class="ok-mark" aria-hidden="true"><svg class="icon"><use href="#i-check"/></svg></span>
+              <div>
+                <h2 id="result-title" tabindex="-1">Response recorded</h2>
+                <p class="sub"><i id="result-name"></i> belongs to <span class="group-chip" id="result-group"></span></p>
+              </div>
+            </div>
+            <p class="sub" id="result-count"></p>
+            <h3 class="group-q">How respondents perceive this whole group</h3>
+            <div class="legend"><span><i class="l-you"></i>Your rating</span><span><i class="l-mean"></i>Group mean</span></div>
+            <ul class="hists" id="group-hists" aria-live="polite"></ul>
+            <p class="proto-note" id="group-source"></p>
+            <div class="q-actions">
+              <span class="hint">Ready for the next one?</span>
+              <button class="btn btn-dark" id="btn-next" type="button">Next species <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- The archive so far (group-level statistics) -->
+      <section class="explore loading" id="explore" aria-labelledby="explore-title">
+        <div class="explore-head">
+          <div>
+            <span class="eyebrow">The archive so far</span>
+            <h2 id="explore-title">How people perceive each animal group</h2>
+            <p class="lead">Average ratings across all respondents for the ten IUCN animal groups. Select a group to see the full distribution.</p>
+          </div>
+          <dl class="totals">
+            <div><dt>Responses</dt><dd id="tot-responses">—</dd></div>
+            <div><dt>Respondents</dt><dd id="tot-respondents">—</dd></div>
+            <div><dt>Countries</dt><dd id="tot-countries">—</dd></div>
+          </dl>
+        </div>
+        <div class="explore-grid">
+          <div class="heatmap-wrap"><table class="heatmap" id="heatmap"></table></div>
+          <div class="detail card">
+            <div class="detail-head"><h3 id="detail-title">—</h3><span id="detail-meta" class="mono"></span></div>
+            <ul class="hists" id="detail-hists"></ul>
+          </div>
+        </div>
+        <div class="scale-key">
+          <span><b class="sw sw-bipolar"></b>Bipolar scales (cute, beautiful, important): negative pole ↔ neutral ↔ positive pole</span>
+          <span><b class="sw sw-danger"></b><b class="sw sw-intellect"></b>One-directional scales (dangerous, intelligent): none → extreme</span>
+          <span><b class="sw sw-iucn"></b>Endangered: IUCN Red List categories</span>
+        </div>
+        <p class="proto-note" id="stats-updated"></p>
+      </section>
+
+      <!-- Field journal -->
+      <section class="journal" aria-labelledby="journal-title">
+        <div class="journal-head">
+          <div>
+            <span class="eyebrow">Your field journal</span>
+            <h2 id="journal-title">Collection, titles &amp; badges</h2>
+          </div>
+          <div class="journal-actions">
+            <span class="mono muted" id="journal-count">0 species collected</span>
+            <button class="link-btn" type="button" id="btn-reset">Reset progress</button>
+          </div>
+        </div>
+
+        <h3 class="sub-h">Animal groups</h3>
+        <ul class="group-collection" id="group-collection"></ul>
+
+        <div class="journal-split">
+          <div>
+            <h3 class="sub-h">Contributor titles</h3>
+            <p class="muted small">Titles acknowledge how much you have contributed to the archive.</p>
+            <ol class="titles" id="titles"></ol>
+          </div>
+          <div>
+            <h3 class="sub-h">Badges</h3>
+            <ul class="badges" id="badges"></ul>
+          </div>
+        </div>
+
+        <h3 class="sub-h">Species you have rated</h3>
+        <div class="empty-state" id="collection-empty">
+          <svg class="icon" aria-hidden="true"><use href="#i-book"/></svg>
+          <p>Your journal is empty. Every species you rate is collected here, together with its animal group.</p>
+        </div>
+        <ul class="collection" id="collection" hidden></ul>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="cols">
+        <div>
+          <h2>Contact WASP</h2>
+          <ul>
+            <li><a href="tel:+3211268111">+32 (0)11 268 111</a></li>
+            <li><a href="mailto:wasp.uhasselt@gmail.com">wasp.uhasselt@gmail.com</a></li>
+            <li>Agoralaan – Building D, 3590 Diepenbeek, Belgium</li>
+          </ul>
+        </div>
+        <div>
+          <h2>Surveys</h2>
+          <ul><li><a href="wasp-a.html">WASP-A · Animals</a></li><li><a href="wasp-p.html">WASP-P · Parasites</a></li><li><a href="wasp-b.html">WASP-B · Plants</a></li></ul>
+        </div>
+        <div>
+          <h2>Project</h2>
+          <ul><li><a href="index.html">About WASP</a></li><li><a href="team.html">Team</a></li><li><a href="contact.html">Contact</a></li></ul>
+        </div>
+        <img class="cmk" src="assets/img/cmk-logo.png" alt="CMK Centre for Environmental Sciences, UHasselt" width="150" height="93" loading="lazy">
+      </div>
+      <div class="legal"><span>© <span data-year>2026</span> WASP Project · Centre for Environmental Sciences, Hasselt University</span><span>Species photos via iNaturalist under Creative Commons licences</span></div>
+    </div>
+  </footer>
+
+  <dialog class="modal" id="about-dialog" aria-labelledby="about-title">
+    <div class="modal-head"><h2 id="about-title">About this survey</h2><button class="icon-btn" data-close aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+    <div class="modal-body"><ul id="about-list"></ul></div>
+    <div class="modal-foot"><button class="btn btn-primary" data-close type="button">Let’s start</button></div>
+  </dialog>
+
+  <dialog class="modal" id="consent-dialog" aria-labelledby="consent-title">
+    <div class="modal-head"><h2 id="consent-title">Before you submit</h2></div>
+    <div class="modal-body"><ul class="consent-list" id="consent-list"></ul></div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" id="consent-cancel" type="button">Cancel</button>
+      <button class="btn btn-primary" id="consent-ok" type="button">I agree</button>
+    </div>
+  </dialog>
+
+  <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+
+  <script src="assets/js/site.js"></script>
+  <script src="assets/js/species-data.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/survey.js"></script>
+</body>
+</html>

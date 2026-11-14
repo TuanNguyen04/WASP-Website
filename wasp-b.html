@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WASP-B Plants · WASP</title>
+  <meta name="description" content="WASP-B: the upcoming World Archives of Species Perception survey for plants.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    .leaf-hero { position: relative; display: grid; place-items: center; aspect-ratio: 1; max-width: 420px; margin-inline: auto; width: 100%; }
+    .leaf-hero .orbit { position: absolute; inset: 0; border: 1.5px dashed var(--charcoal-3); border-radius: 50%; }
+    .leaf-hero .orbit.o2 { inset: 16%; border-color: rgba(227,179,65,.35); }
+    .leaf-hero .core { width: 46%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #3f7f3a, #1f4d22); display: grid; place-items: center; box-shadow: 0 0 0 10px rgba(44,161,63,.12), var(--shadow-3); }
+    .leaf-hero .core .icon { width: 44%; height: 44%; color: #eaf6dd; stroke-width: 1.4; }
+    .leaf-hero .tagc { position: absolute; background: var(--paper); color: var(--ink); padding: 6px 14px; border-radius: 999px; font-size: .85rem; font-weight: 600; box-shadow: var(--shadow-2); }
+    .expect { display: grid; gap: var(--s4); margin-top: var(--s6); }
+    @media (min-width: 900px) { .expect { grid-template-columns: repeat(3, 1fr); } }
+    .expect .card .icon { width: 36px; height: 36px; color: var(--green-ink); margin-bottom: var(--s3); }
+    .placeholder-note { font-size: .82rem; color: var(--muted); border-left: 3px solid var(--green); padding-left: var(--s3); margin-top: var(--s5); }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html"><img src="assets/img/wasp-logo.png" alt="World Archives of Species Perception project — home" width="135" height="58"></a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg></button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="wasp-a.html">WASP-A</a></li>
+          <li><a href="wasp-p.html">WASP-P</a></li>
+          <li><a href="wasp-b.html" aria-current="page">WASP-B <span class="tag">Soon</span></a></li>
+          <li><a href="index.html">Project</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- PLACEHOLDER COPY: replace with the final WASP-B description and survey details. -->
+    <section class="hero dark">
+      <div class="container grid-2">
+        <div>
+          <span class="badge-soon">Coming soon</span>
+          <span class="eyebrow" style="display:flex; margin-top:var(--s4)">WASP-B · Plants</span>
+          <h1>How do you see <span class="accent">the green world?</span></h1>
+          <p class="lead">WASP-B brings plants into the World Archives of Species Perception: roughly 2,000 plant species, representing about 76% of all plant families evaluated under the IUCN Red List. It follows the spirit of WASP-A, with a more in-depth survey design.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="mailto:wasp.uhasselt@gmail.com?subject=Notify%20me%20when%20WASP-B%20launches">Notify me at launch <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></a>
+            <a class="btn btn-ghost" href="wasp-a.html">Try WASP-A meanwhile</a>
+          </div>
+        </div>
+        <div class="leaf-hero" aria-hidden="true">
+          <div class="orbit"></div><div class="orbit o2"></div>
+          <div class="core"><svg class="icon"><use href="#i-leaf"/></svg></div>
+          <span class="tagc" style="top:8%; left:4%">~2,000 species</span>
+          <span class="tagc" style="bottom:14%; right:0">76% of families</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <span class="eyebrow">What to expect</span>
+        <h2>Plants deserve a closer look</h2>
+        <p class="lead">Plants are often overlooked in conservation debates, a phenomenon sometimes called “plant blindness”. WASP-B will help researchers understand which plants people notice, value and want to protect.</p>
+        <div class="expect">
+          <div class="card"><svg class="icon" aria-hidden="true"><use href="#i-leaf"/></svg><h3>Rate plant species</h3><p>Observe real photographs of plants from around the world and tell us what you think. There are no right or wrong answers.</p></div>
+          <div class="card"><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg><h3>A deeper survey</h3><p>WASP-B builds on WASP-A with a more sophisticated survey design that captures richer insights into how people perceive plants.</p></div>
+          <div class="card"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg><h3>Grow your journal</h3><p>Plants you rate will join your personal field journal, with new badges to unlock along the way.</p></div>
+        </div>
+        <p class="placeholder-note">This page is a placeholder until the WASP-B survey is finalised.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="cols">
+        <div>
+          <h2>Contact WASP</h2>
+          <ul>
+            <li><a href="tel:+3211268111">+32 (0)11 268 111</a></li>
+            <li><a href="mailto:wasp.uhasselt@gmail.com">wasp.uhasselt@gmail.com</a></li>
+            <li>Agoralaan – Building D, 3590 Diepenbeek, Belgium</li>
+          </ul>
+        </div>
+        <div>
+          <h2>Surveys</h2>
+          <ul><li><a href="wasp-a.html">WASP-A · Animals</a></li><li><a href="wasp-p.html">WASP-P · Parasites</a></li><li><a href="wasp-b.html">WASP-B · Plants</a></li></ul>
+        </div>
+        <div>
+          <h2>Project</h2>
+          <ul><li><a href="index.html">About WASP</a></li><li><a href="team.html">Team</a></li><li><a href="contact.html">Contact</a></li></ul>
+        </div>
+        <img class="cmk" src="assets/img/cmk-logo.png" alt="CMK Centre for Environmental Sciences, UHasselt" width="150" height="93" loading="lazy">
+      </div>
+      <div class="legal"><span>© <span data-year>2026</span> WASP Project · Centre for Environmental Sciences, Hasselt University</span><span>Species photos via iNaturalist under Creative Commons licences</span></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js"></script>
+</body>
+</html>

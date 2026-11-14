@@ -1,0 +1,8 @@
+# Source media (optimised copies live in assets/img). Remove this line to publish them.
+Media/
+
+# Local tooling
+.claude/settings.local.json
+node_modules/
+.DS_Store
+Thumbs.db
