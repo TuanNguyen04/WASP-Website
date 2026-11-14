@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Results So Far · WASP</title>
+  <meta name="description" content="How respondents perceive the ten animal groups of WASP-A.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/survey.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html" aria-label="World Archives of Species Perception, home"><img src="assets/img/wasp-emblem-dark.png" alt="" width="46" height="45"><span class="brand-name" aria-hidden="true"><b>World Archives of</b><b>Species Perception</b></span></a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg></button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="wasp-a.html">WASP-A</a></li>
+          <li><a href="wasp-p.html">WASP-P</a></li>
+          <li><a href="wasp-b.html">WASP-B <span class="tag">Soon</span></a></li>
+          <li><a href="index.html">Project</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-head tint">
+      <div class="container">
+        <span class="eyebrow">WASP-A · Results so far</span>
+        <h1>How people perceive each animal group</h1>
+        <p class="lead">Average ratings from all respondents for the ten IUCN animal groups. Select a group to see how answers are spread across the 9-point scale.</p>
+        <dl class="totals">
+          <div><dt>Responses</dt><dd id="tot-responses">—</dd></div>
+          <div><dt>Respondents</dt><dd id="tot-respondents">—</dd></div>
+          <div><dt>Countries</dt><dd id="tot-countries">—</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section style="padding-top:var(--s5)">
+      <div class="container">
+        <div class="explore-grid">
+          <div class="heatmap-wrap" id="heatmap-wrap"><div class="loading-block"></div></div>
+          <div class="card">
+            <div class="detail-head"><h2 class="h3" id="detail-title" style="font-size:1.3rem;margin:0">—</h2><span id="detail-meta" class="mono"></span></div>
+            <ul class="hists" id="detail-hists"></ul>
+          </div>
+        </div>
+        <div class="scale-key" id="scale-key"></div>
+        <p class="proto-note" id="stats-updated"></p>
+        <a class="btn btn-primary" href="wasp-a.html" style="margin-top:var(--s5)">Add your ratings <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <img class="footer-logo" src="assets/img/wasp-logo-band.png" alt="World Archives of Species Perception project" width="340" height="130" loading="lazy">
+      <div class="cols">
+        <div>
+          <h2>Contact WASP</h2>
+          <ul>
+            <li><a href="tel:+3211268111">+32 (0)11 268 111</a></li>
+            <li><a href="mailto:wasp.uhasselt@gmail.com">wasp.uhasselt@gmail.com</a></li>
+            <li>Agoralaan – Building D, 3590 Diepenbeek, Belgium</li>
+          </ul>
+        </div>
+        <div>
+          <h2>Surveys</h2>
+          <ul><li><a href="wasp-a.html">WASP-A · Animals</a></li><li><a href="wasp-p.html">WASP-P · Parasites</a></li><li><a href="wasp-b.html">WASP-B · Plants</a></li></ul>
+        </div>
+        <div>
+          <h2>Project</h2>
+          <ul><li><a href="index.html">About WASP</a></li><li><a href="results.html">Results so far</a></li><li><a href="team.html">Team</a></li><li><a href="contact.html">Contact</a></li></ul>
+        </div>
+        <img class="cmk" src="assets/img/cmk-logo.png" alt="CMK Centre for Environmental Sciences, UHasselt" width="150" height="93" loading="lazy">
+      </div>
+      <div class="legal"><span>© <span data-year>2026</span> WASP Project · Centre for Environmental Sciences, Hasselt University</span><span>Species photos via iNaturalist under Creative Commons licences</span></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js"></script>
+  <script src="assets/js/species-data.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/progress.js"></script>
+  <script>
+    (function () {
+      const { QUESTION_TYPES, SCALE_LABELS, GROUPS, api, util, icon } = WASP;
+      const { esc, fmt, ago, ink, paletteFor, colorAt } = util;
+      const byId = Object.fromEntries(GROUPS.map((g) => [g.id, g]));
+      const $ = (s) => document.querySelector(s);
+      let stats = null; let active = 'mammals';
+
+      function hist(q, s) {
+        const pal = paletteFor(q); const max = Math.max(...s.hist); const total = s.hist.reduce((a, b) => a + b, 0);
+        const mode = s.hist.indexOf(max);
+        const head = q.type === 'categorical' ? `Most chosen: ${SCALE_LABELS[q.id][mode]} (${Math.round((max / total) * 100)}%)` : `Mean ${s.mean.toFixed(1)} · ${SCALE_LABELS[q.id][Math.round(s.mean) - 1]}`;
+        const bars = s.hist.map((c, i) => `<span class="bar" style="--h:${Math.max(4, (c / max) * 100)}%;--fill:${pal[i]}" title="${esc(SCALE_LABELS[q.id][i])}: ${Math.round((c / total) * 100)}%"></span>`).join('');
+        const mark = q.type === 'categorical' ? '' : `<span class="mean-mark" style="left:${((s.mean - 0.5) / 9) * 100}%"></span>`;
+        return `<li style="--c:${q.ink}"><div class="hist-head"><strong>${esc(q.text)}</strong><span>${esc(head)}</span></div><div class="bars" role="img" aria-label="${esc(q.text)}: ${esc(head)}">${bars}${mark}</div><div class="hist-axis"><span>1</span><span>9</span></div></li>`;
+      }
+      function detail() {
+        const gs = stats.groups.find((x) => x.id === active); const g = byId[active];
+        $('#detail-title').innerHTML = `${icon(g.icon)}${esc(g.name)}`;
+        $('#detail-meta').textContent = `≈${gs.species} species · ${fmt(gs.responses)} responses`;
+        $('#detail-hists').innerHTML = QUESTION_TYPES.map((q) => hist(q, gs.questions[q.id])).join('');
+        document.querySelectorAll('#heatmap tbody tr').forEach((tr) => {
+          const b = tr.querySelector('[data-group]'); const on = b.dataset.group === active;
+          tr.classList.toggle('active', on); b.setAttribute('aria-pressed', String(on));
+        });
+      }
+      api.groupStats().then((s) => {
+        stats = s;
+        $('#tot-responses').textContent = fmt(s.totals.responses);
+        $('#tot-respondents').textContent = fmt(s.totals.respondents);
+        $('#tot-countries').textContent = fmt(s.totals.countries);
+        $('#stats-updated').textContent = `Updated ${ago(s.updatedAt)}.${s.illustrative ? ' Prototype: these figures are illustrative until the WASP database is connected.' : ''}`;
+        $('#heatmap-wrap').innerHTML = `<table class="heatmap" id="heatmap">
+          <caption class="sr-only">Average rating per animal group and trait, from 1 to 9</caption>
+          <thead><tr><th scope="col">Group</th>${QUESTION_TYPES.map((q) => `<th scope="col" style="--c:${q.ink}">${esc(q.text)}</th>`).join('')}</tr></thead>
+          <tbody>${s.groups.map((gs) => { const g = byId[gs.id];
+            return `<tr><th scope="row"><button type="button" data-group="${gs.id}">${icon(g.icon)}${esc(g.name)}</button></th>${QUESTION_TYPES.map((q) => {
+              const m = gs.questions[q.id].mean; const c = colorAt(q, m);
+              return `<td style="background:${c};color:${ink(c)}" title="${esc(g.name)} · ${esc(q.text)}: ${m.toFixed(1)}">${m.toFixed(1)}</td>`; }).join('')}</tr>`; }).join('')}</tbody></table>`;
+        $('#heatmap').addEventListener('click', (e) => { const b = e.target.closest('[data-group]'); if (b) { active = b.dataset.group; detail(); } });
+        const sw = (q) => `<b class="sw" style="background:linear-gradient(90deg,${paletteFor(q).join(',')})"></b>`;
+        $('#scale-key').innerHTML = `<span>${sw(QUESTION_TYPES[0])}Bipolar traits (cute, beautiful, important): negative ↔ neutral ↔ positive</span><span>${sw(QUESTION_TYPES[1])}${sw(QUESTION_TYPES[2])}One-directional traits (dangerous, intelligent)</span><span>${sw(QUESTION_TYPES[4])}Endangered: IUCN Red List categories</span>`;
+        detail();
+      }).catch(() => { $('#heatmap-wrap').innerHTML = '<p class="muted" style="padding:var(--s4)">Results are temporarily unavailable. Please try again later.</p>'; });
+    })();
+  </script>
+</body>
+</html>

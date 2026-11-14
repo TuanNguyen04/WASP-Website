@@ -7,7 +7,7 @@
   <meta name="description" content="WASP is a citizen science project from Hasselt University on how people perceive the species we share our planet with. Rate species and contribute to science.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
   <style>
     .media-icon { display: grid; place-items: center; height: 100%; background: radial-gradient(circle at 30% 20%, #4a4a4d, var(--charcoal) 70%); }
@@ -19,7 +19,7 @@
 
   <header class="site-header">
     <div class="container">
-      <a class="brand" href="index.html"><img src="assets/img/wasp-logo.png" alt="World Archives of Species Perception project — home" width="135" height="58"></a>
+      <a class="brand" href="index.html" aria-label="World Archives of Species Perception, home"><img src="assets/img/wasp-emblem-dark.png" alt="" width="46" height="45"><span class="brand-name" aria-hidden="true"><b>World Archives of</b><b>Species Perception</b></span></a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg></button>
       <nav class="site-nav" id="site-nav" aria-label="Main">
         <ul class="nav-list">
@@ -36,7 +36,7 @@
 
   <main id="main">
     <!-- Hero -->
-    <section class="hero dark">
+    <section class="hero tint">
       <div class="container grid-2">
         <div>
           <span class="eyebrow">Citizen science · Hasselt University</span>
@@ -77,7 +77,7 @@
     </section>
 
     <!-- Surveys -->
-    <section class="dark" id="surveys">
+    <section class="tint" id="surveys">
       <div class="container">
         <span class="eyebrow">The surveys</span>
         <h2>Choose your expedition</h2>
@@ -175,7 +175,7 @@
     </section>
 
     <!-- More -->
-    <section class="dark">
+    <section class="tint">
       <div class="container">
         <span class="eyebrow">If this left you wanting more</span>
         <h2>Keep exploring</h2>
@@ -200,6 +200,7 @@
 
   <footer class="site-footer">
     <div class="container">
+      <img class="footer-logo" src="assets/img/wasp-logo-band.png" alt="World Archives of Species Perception project" width="340" height="130" loading="lazy">
       <div class="cols">
         <div>
           <h2>Contact WASP</h2>
@@ -215,7 +216,7 @@
         </div>
         <div>
           <h2>Project</h2>
-          <ul><li><a href="index.html">About WASP</a></li><li><a href="team.html">Team</a></li><li><a href="contact.html">Contact</a></li></ul>
+          <ul><li><a href="index.html">About WASP</a></li><li><a href="results.html">Results so far</a></li><li><a href="team.html">Team</a></li><li><a href="contact.html">Contact</a></li></ul>
         </div>
         <img class="cmk" src="assets/img/cmk-logo.png" alt="CMK Centre for Environmental Sciences, UHasselt" width="150" height="93" loading="lazy">
       </div>

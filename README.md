@@ -5,7 +5,9 @@ A static site using plain HTML, CSS and JS. There is no build step and no back e
 | Page | File |
 |---|---|
 | Project (home) | `index.html` |
-| WASP-A animal survey | `wasp-a.html` |
+| WASP-A animal survey (survey only) | `wasp-a.html` |
+| My field journal (titles, badges, rated species) | `journal.html` |
+| Results so far (group-level statistics) | `results.html` |
 | WASP-P parasites | `wasp-p.html` |
 | WASP-B plants (coming soon, placeholder copy) | `wasp-b.html` |
 | Team | `team.html` |
@@ -21,15 +23,20 @@ node .claude/serve.js
 
 Then go to http://localhost:5173.
 
+## Brand
+
+White pages with CMK green (`#2CA13F`) for actions, the WASP-logo charcoal (`#2F2F30`) for text and the footer, and the wasp's amber (`#F2B51D`) only for rewards. Fonts: Outfit (headings) and Inter (text). The header uses the logo's globe emblem (`assets/img/wasp-emblem-dark.png`, cut from the 2022 logo) with the project name as real text. The full logo is in the footer.
+
 ## WASP-A design notes
 
-- **Unchanged survey content:** the question, the six traits, the 9-point labels, the "About this survey" text and the consent text are in `assets/js/species-data.js`. Answers are still sent as 1–9.
+- **Original survey preserved:** the question, the six traits with their original colours, the 9-point labels, the "About this survey" and consent texts, the species photos with their credits, and the "CONTACT WASP" footer with the CMK logo all come from wasp-project.net/survey. Answers are still sent as 1–9.
+- **Survey only:** the page shows one species at a time. After **Rate**, the next species (already preloaded) appears immediately, with no results screen in between. On phones the six traits come in two sets of three, as on the original site.
 - **Hexagon scales** are coloured by scale type, following Nguyen et al. (2023):
-  - Bipolar traits (cute, beautiful, important for ecosystem) use a diverging purple–green palette with a neutral middle.
-  - One-directional traits (dangerous, intelligent) use sequential red and sequential blue.
-  - Endangered uses the official IUCN Red List category colours, with the category guideline under the scale.
-- **Group-level statistics only:** after rating, respondents see how *all respondents* perceive the species' animal group (one of the 10 IUCN groups). They never see results for a single species. The "Results so far" section shows a group × trait heatmap and the distributions for each group.
-- **Contributor titles:** Contributor → Observer → Field Assistant → Naturalist → Field Researcher → Senior Researcher → Archivist → Curator → Guardian of the Archive. The page also has streaks, badges, a collection of the 10 groups and a personal species journal. All of this is stored on the visitor's device.
+  - Bipolar traits (cute, beautiful, important for ecosystem): slate (negative) → light neutral → the trait's original colour.
+  - One-directional traits (dangerous, intelligent): light tint → the trait's colour.
+  - Endangered: official IUCN Red List category colours, with the category guideline under the scale.
+- **Light-touch engagement:** a slim chip above the card shows the contributor title, the number of species rated and any streak, and links to the journal. New titles and badges appear as short notifications. Titles: Contributor → Observer → Field Assistant → Naturalist → Field Researcher → Senior Researcher → Archivist → Curator → Guardian of the Archive. All of this is stored on the visitor's device.
+- **Statistics live on their own page** (`results.html`): a group × trait heatmap and the distributions for each of the 10 IUCN groups. There is never anything per species.
 - **Scale-ready data layer** (`assets/js/api.js`): species are prefetched in batches, and ratings go through an outbox with batched, retried and idempotent sync. Statistics are pre-aggregated and cached. See **`docs/API-CONTRACT.md`**.
 
 ## Prototype limitations

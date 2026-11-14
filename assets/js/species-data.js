@@ -10,25 +10,22 @@ WASP.API_BASE = 'https://wasp.orpolyzos.com';
 WASP.TOTAL_SPECIES = 1980; // "We have a total of 1,980 animals for you to discover."
 WASP.QUESTION_TITLE = 'How would you rate this animal in terms of it being';
 
-/* ---------- scale palettes: colour encodes the nature of each scale ----------
-   bipolar     negative pole ↔ neutral ↔ positive pole  (diverging purple–green)
-   unipolar    none → extreme                           (sequential, one hue)
-   categorical IUCN Red List categories                 (official IUCN colours)  */
-WASP.PALETTES = {
-  bipolar: ['#762a83', '#9970ab', '#c2a5cf', '#e7d4e8', '#ece8df', '#d9f0d3', '#a6dba0', '#5aae61', '#1b7837'],
-  danger: ['#fff1e9', '#fdd5c0', '#fcb499', '#fc9272', '#fb6a4a', '#ef3b2c', '#cb181d', '#a50f15', '#67000d'],
-  intellect: ['#eef4fb', '#d6e6f4', '#bcd7ec', '#9ac8e0', '#6baed6', '#4292c6', '#2171b5', '#08519c', '#08306b'],
-  iucn: ['#60c659', '#cce226', '#f9e814', '#f9e814', '#fc7f3f', '#fc7f3f', '#d81e05', '#d81e05', '#542344']
-};
-
+/* ---------- attributes ----------
+   `hex` is the original attribute colour from wasp-project.net/survey;
+   `ink` is a darker shade of it for readable text on white.
+   Scale colours (see WASP.paletteFor in progress.js) encode the nature of each scale:
+   bipolar     slate (negative pole) -> light neutral -> attribute colour (positive pole)
+   unipolar    light tint -> attribute colour
+   categorical official IUCN Red List category colours */
 WASP.QUESTION_TYPES = [
-  { id: 'CUTE', text: 'Cute', color: 'var(--a-cute)', type: 'bipolar', palette: 'bipolar' },
-  { id: 'DANGEROUS', text: 'Dangerous', color: 'var(--a-dangerous)', type: 'unipolar', palette: 'danger' },
-  { id: 'INTELLIGENT', text: 'Intelligent', color: 'var(--a-intelligent)', type: 'unipolar', palette: 'intellect' },
-  { id: 'BEAUTIFUL', text: 'Beautiful', color: 'var(--a-beautiful)', type: 'bipolar', palette: 'bipolar' },
-  { id: 'ENDANGERED', text: 'Endangered', color: 'var(--a-endangered)', type: 'categorical', palette: 'iucn' },
-  { id: 'IMPORTANT_FOR_ECOSYSTEMS', text: 'Important for ecosystem', color: 'var(--a-important)', type: 'bipolar', palette: 'bipolar' }
+  { id: 'CUTE', text: 'Cute', hex: '#f6d55c', ink: '#9a7a00', type: 'bipolar' },
+  { id: 'DANGEROUS', text: 'Dangerous', hex: '#ed553b', ink: '#c63b22', type: 'unipolar' },
+  { id: 'INTELLIGENT', text: 'Intelligent', hex: '#1f497d', ink: '#1f497d', type: 'unipolar' },
+  { id: 'BEAUTIFUL', text: 'Beautiful', hex: '#f473b3', ink: '#c2347c', type: 'bipolar' },
+  { id: 'ENDANGERED', text: 'Endangered', hex: '#674a40', ink: '#674a40', type: 'categorical' },
+  { id: 'IMPORTANT_FOR_ECOSYSTEMS', text: 'Important for ecosystem', hex: '#50a3a4', ink: '#2b7b7c', type: 'bipolar' }
 ];
+WASP.IUCN_COLORS = ['#60c659', '#cce226', '#f9e814', '#f9e814', '#fc7f3f', '#fc7f3f', '#d81e05', '#d81e05', '#542344'];
 
 // Index 0..8 corresponds to the rating value 1..9 sent to the API.
 WASP.SCALE_LABELS = {

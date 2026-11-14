@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Field Journal · WASP</title>
+  <meta name="description" content="Your WASP-A contributor title, badges and the species you have rated.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/survey.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html" aria-label="World Archives of Species Perception, home"><img src="assets/img/wasp-emblem-dark.png" alt="" width="46" height="45"><span class="brand-name" aria-hidden="true"><b>World Archives of</b><b>Species Perception</b></span></a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg></button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="wasp-a.html">WASP-A</a></li>
+          <li><a href="wasp-p.html">WASP-P</a></li>
+          <li><a href="wasp-b.html">WASP-B <span class="tag">Soon</span></a></li>
+          <li><a href="index.html">Project</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-head tint">
+      <div class="container">
+        <span class="eyebrow">Your field journal · WASP-A</span>
+        <div class="journal-hero">
+          <span class="big-medal" aria-hidden="true"><svg class="icon"><use href="#i-award"/></svg></span>
+          <div>
+            <h1 id="j-title">Visitor</h1>
+            <div class="muted" id="j-next">Rate your first species to become a Contributor</div>
+            <div class="bar" role="progressbar" aria-label="Progress to next title" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="j-bar" style="width:0"></i></div>
+          </div>
+        </div>
+        <div class="journal-stats">
+          <div><b id="j-rated">0</b><span>species rated</span></div>
+          <div><b id="j-streak">0</b><span>day streak</span></div>
+          <div><b id="j-groups">0/10</b><span>animal groups</span></div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)">
+          <a class="btn btn-primary" href="wasp-a.html">Continue rating <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-ghost" href="results.html">See everyone’s results</a>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:var(--s5)">
+      <div class="container">
+        <h2 class="sub-h" style="margin-top:0">Animal groups</h2>
+        <ul class="group-collection" id="group-collection"></ul>
+
+        <div class="journal-split">
+          <div>
+            <h2 class="sub-h">Contributor titles</h2>
+            <p class="muted">Titles acknowledge how much you have contributed to the archive.</p>
+            <ol class="titles" id="titles"></ol>
+          </div>
+          <div>
+            <h2 class="sub-h">Badges</h2>
+            <ul class="badges" id="badges"></ul>
+          </div>
+        </div>
+
+        <h2 class="sub-h">Species you have rated</h2>
+        <div class="empty-state" id="collection-empty"><p>Your journal is empty. Every species you rate appears here, together with its animal group.</p></div>
+        <ul class="collection" id="collection" hidden></ul>
+        <p class="proto-note">Your journal is stored in this browser only. <button class="about-link" type="button" id="btn-reset" style="min-height:0;padding:0;text-decoration:underline">Reset my journal</button></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <img class="footer-logo" src="assets/img/wasp-logo-band.png" alt="World Archives of Species Perception project" width="340" height="130" loading="lazy">
+      <div class="cols">
+        <div>
+          <h2>Contact WASP</h2>
+          <ul>
+            <li><a href="tel:+3211268111">+32 (0)11 268 111</a></li>
+            <li><a href="mailto:wasp.uhasselt@gmail.com">wasp.uhasselt@gmail.com</a></li>
+            <li>Agoralaan – Building D, 3590 Diepenbeek, Belgium</li>
+          </ul>
+        </div>
+        <div>
+          <h2>Surveys</h2>
+          <ul><li><a href="wasp-a.html">WASP-A · Animals</a></li><li><a href="wasp-p.html">WASP-P · Parasites</a></li><li><a href="wasp-b.html">WASP-B · Plants</a></li></ul>
+        </div>
+        <div>
+          <h2>Project</h2>
+          <ul><li><a href="index.html">About WASP</a></li><li><a href="results.html">Results so far</a></li><li><a href="team.html">Team</a></li><li><a href="contact.html">Contact</a></li></ul>
+        </div>
+        <img class="cmk" src="assets/img/cmk-logo.png" alt="CMK Centre for Environmental Sciences, UHasselt" width="150" height="93" loading="lazy">
+      </div>
+      <div class="legal"><span>© <span data-year>2026</span> WASP Project · Centre for Environmental Sciences, Hasselt University</span><span>Species photos via iNaturalist under Creative Commons licences</span></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js"></script>
+  <script src="assets/js/species-data.js"></script>
+  <script src="assets/js/progress.js"></script>
+  <script>
+    (function () {
+      const { progress, util, GROUPS, GROUP_SIZE, icon } = WASP;
+      const { esc, fmt } = util;
+      const $ = (s) => document.querySelector(s);
+      function render() {
+        const st = progress.state;
+        const n = st.rated.length;
+        const t = progress.titleFor(n);
+        $('#j-title').textContent = t.cur.name;
+        $('#j-next').textContent = t.next ? (n ? `${fmt(t.next.min - n)} more species to become ${t.next.name}` : 'Rate your first species to become a Contributor') : 'Every species in WASP-A rated. Thank you!';
+        $('#j-bar').style.width = `${t.pct}%`;
+        $('#j-bar').parentElement.setAttribute('aria-valuenow', t.pct);
+        const counts = progress.perGroup();
+        $('#j-rated').textContent = fmt(n);
+        $('#j-streak').textContent = progress.streak();
+        $('#j-groups').textContent = `${Object.keys(counts).length}/10`;
+
+        $('#group-collection').innerHTML = GROUPS.map((g) => {
+          const c = counts[g.id] || 0; const size = g.id === 'corals' ? 180 : GROUP_SIZE;
+          return `<li class="${c ? 'found' : ''}"><span class="g-icon">${icon(g.icon)}</span><strong>${esc(g.name)}</strong><span class="g-count mono">${c} / ≈${size}</span>
+            <span class="meter" role="progressbar" aria-label="${esc(g.name)} rated" aria-valuemin="0" aria-valuemax="${size}" aria-valuenow="${c}"><i style="width:${Math.min(100, (c / size) * 100)}%"></i></span></li>`;
+        }).join('');
+
+        $('#titles').innerHTML = progress.TITLES.slice(1).map((x) => `<li class="${n >= x.min ? 'earned' : ''}"><span class="mono">${fmt(x.min)}+</span>${esc(x.name)}${n >= x.min ? icon('check') : ''}</li>`).join('');
+
+        const got = progress.earned();
+        $('#badges').innerHTML = progress.BADGES.map((b) => {
+          const v = Math.min(b.val(), b.goal); const has = got.has(b.id);
+          return `<li class="badge ${has ? 'earned' : ''}"><div class="medal">${icon(b.icon)}</div><strong>${esc(b.name)}</strong><span>${esc(b.desc)}</span>
+            ${has ? '<div class="state">Earned</div>' : `<div class="meter"><i style="width:${(v / b.goal) * 100}%"></i></div><div class="state">${v} / ${b.goal}</div>`}</li>`;
+        }).join('');
+
+        const items = [...st.rated].reverse();
+        $('#collection-empty').hidden = items.length > 0;
+        $('#collection').hidden = !items.length;
+        $('#collection').innerHTML = items.slice(0, 120).map((r) => `<li><img src="${r.src}" alt="${esc(r.name)}" loading="lazy" width="140" height="140"><div class="cname">${esc(r.name)}</div><div class="cmeta"><span class="group">${esc(progress.groupById[r.group]?.name || 'Animal')}</span><span>${esc(r.date)}</span></div></li>`).join('');
+      }
+      $('#btn-reset').addEventListener('click', () => {
+        if (!confirm('Reset your journal, titles and badges on this device? Ratings you have already submitted are not affected.')) return;
+        progress.reset(); render();
+      });
+      render();
+    })();
+  </script>
+</body>
+</html>
